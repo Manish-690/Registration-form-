@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+  }
+  .form-horizontal{
+    margin-top: 25px;
+    margin-left: 30%;
+    margin-right: 50px;
+    margin-bottom: 25px;
+    width: 60%;
+   background-color: rgb(224, 253, 253);
+  }
+  .header{
+    text-align: center;
+    color: black;
+  }
+  .header h2{
+    font-size: 40px;
+  }
+  #btn{
+    margin-top: 18px;
+   margin-left: 10px;
+   width: 35%;
+   border-radius: 4px solid black;
+   font-size: 20px;
+   padding: 15px;
+   border: 2px solid white;
+   color: rgb(241, 241, 247);
+   background-color: rgb(22, 153, 46);
+  
+  }
+  body{
+  background: linear-gradient(110deg, white, rgb(245, 230, 194));
+  
+  }
+  #confirm-password-error{
+    color: red;
+  }
+  #password-error{
+    color: red;
+  }
+  #designation-error{
+    color: red;   
+  }
+  #hobby-error{
+    color: red;  
+  }
+  #phone-error{
+    color: red;   
+  }
+  #email-error{
+    color: red;
+  }
+  #nameerror{
+    color: red; 
+  }
+  #formerror{
+    color: red;
+  }
+  span, .star{
+    color:red;
+  }
+  #hobby{
+    margin-left: 100px;
+  }
+    </style>
+</head>
+<body>
+    <form class="form-horizontal px-4 py-2"  method="post" action="#">
+        
+        <div class="header">
+            <h2> Registration Form</h2>
+         </div>
+         <br>
+        <div class="form-group">
+
+            <label> First Name<span class="star">*</span></label> 
+            
+           <input id="nameId" name="firstnameId" class="form-control"  type="text" placeholder="Enter Your First Name " onkeyup="FirstName()">
+           <span id="formerror" style="color: red;" ></span> <br>
+         </div>  
+
+         <div class="form-group">
+
+            <label>Last Name<span class="star"></span></label>
+            
+           <input id="lastnameId" name="lastname" class="form-control"   type="text" placeholder="Enter Your Last Name " onkeyup="LastName()">
+           <span id="nameerror"></span><br>
+         </div>
+
+         <div class="form-group">
+            <label for="email">Email<span class="star">*</span></label>
+            
+            <input type="email" class="form-control" id="email" name="useremail" placeholder="example12@gmail.com" onkeyup=Email()>
+            <span id="email-error"></span> <br>
+         </div>
+         <div  class="form-group">
+            <label class="form-group" >Gender<span class="star">*</span></label> &nbsp;&nbsp;
+
+            <input type="radio" id="male" name="usergender" value="male" onblur=Gender()> <label>Male</label>
+
+            <input type="radio" id="female" name="usergender" value="female" onblur=Gender()> <label>Female</label><br>
+            <span id="gender-error" style="color: red;"></span>
+         </div> 
+         <br>
+         <div class="form-group">
+            <label for="phone">Phone Number<span class="star">*</span></label> 
+            <input type="tel" class="form-control"  id="phone" name="phonenumber" placeholder="Enter Your Phone Number" onkeyup=Phone()>
+            <span id="phone-error"></span> 
+         </div>
+           <br>
+           <div class="form-group"> 
+            <label > Hobbies<span class="star">*</span></label>
+
+            <div id="hobby">
+
+            <input type="checkbox" name="hobbies" value="Singing" onkeyup=Hobbies() > Singing <br>
+
+            <input type="checkbox" name="hobbies" value="Reading"> Reading <br>
+
+            <input type="checkbox" name="hobbies" value="Dancing"> Dancing <br>
+
+            <input type="checkbox" name="hobbies" value="Writing"> Writing <br>
+         </div>
+         </div>
+         <span id="hobby-error"></span> 
+         <br>
+
+         <div class="form-group">
+            <label>Password<span class="star">*</span></label> 
+             <br> <input type="password" class="form-control" name="userpassword"  id="password" placeholder="Enter Your Password"  onkeyup=Password()>
+             <span id="password-error"></span>
+         </div>
+         <br>
+         <div class="form-group">
+            <label>Confirm Password<span class="star">*</span></label>  
+              <br><input type="password" class="form-control"  name="confirmpassword" id="confirm-password" placeholder="Re-Enter Your Password" onkeyup=ConfirmPassword()>
+              <span id="confirm-password-error" ></span><br>    
+         </div> 
+         <div class="form-group col-12">
+            <label for="designation">Designation<span class="star">*</span></label>
+            <select class="form-control" id="designation" >
+                <option name="designation" value="intern">Intern</option>
+                <option name="designation" value="juniorSE">Junior Software Engineer</option>
+                <option name="designation" value="teamlead">Team Lead</option>
+                <option name="designation" value="projectmanager">Project Manager</option>
+                
+            </select >
+
+     <div ><br>
+
+        <input type="submit" ></input>
+    </form>
+
+    <script>
+        
+        const form = document.querySelector('form');
+        const firstInput = document.getElementById('nameId');
+        const lastInput = document.getElementById('lastnameId'); 
+        const dobInput = document.getElementById('dob');
+        const phoneInput = document.getElementById('phone');
+        const emailInput = document.getElementById('email');
+        const genderInputs = document.querySelectorAll('input[name="gender"]');
+        const hobbyInputs = document.querySelectorAll('input[name="hobbies"]');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirm-password');
+        
+        // adding event listeners to detect changes & inputs made by the user 
+        //form.addEventListener('submit', Form);
+        firstInput.addEventListener('input', FirstName);
+        lastInput.addEventListener('input', LastName);
+        phoneInput.addEventListener('input', Phone);
+        emailInput.addEventListener('input', Email);
+        passwordInput.addEventListener('input', Password);
+        confirmPasswordInput.addEventListener('input', ConfirmPassword);
+        genderInputs.forEach(input => {
+          input.addEventListener('change', Gender);
+        });
+        
+          hobbyInputs.forEach(input => {
+          input.addEventListener('change', Hobbies);
+        });  
+        // first-name-validation-starts
+        function FirstName() {
+            const firstnameError = document.querySelector('#formerror');
+            const firstnamePattern = /^[A-Za-z]+([\s.]+[A-Za-z]+)*$/;
+            
+            if (!firstnamePattern.test(firstInput.value)) {
+                firstnameError.textContent = 'Please enter your first name';
+              return false;
+            } else {
+                firstnameError.textContent = '';
+              return true;
+            }
+          }
+        // first-name-validation-ends
+        
+        //last-name-validation-starts
+        function LastName() {
+           /* const lastnameError = document.querySelector('#nameerror');
+            const lastnamePattern = /^[A-Za-z]+([\s.]+[A-Za-z]+)*$/;
+            
+            if (!lastnamePattern.test(lastInput.value)) {
+                lastnameError.textContent = 'Please enter a valid last name';
+              return false;}
+              else {
+                lastnameError.textContent = '';
+              return true;
+            }*/
+          }  
+        //last-name-validation-ends
+        
+        //phone-validation-starts
+        function Phone() {
+          const phoneError = document.querySelector('#phone-error');
+          const phonePattern = /^\d{10}$/;
+          
+          if (!phonePattern.test(phoneInput.value)) {
+            phoneError.textContent = 'Please enter a valid 10-digit phone number';
+            return false;
+          } else {
+            phoneError.textContent = '';
+            return true;
+          }
+        }
+        //phone-validation-ends   ^[a-zA-Z0-9.!#$%&'*+/=?^_-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$
+        
+        
+        //email-validation-starts
+        function Email() {
+          const emailError = document.querySelector('#email-error');
+          const emailPattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+          
+          if (!emailPattern.test(emailInput.value)) {
+            emailError.textContent = 'Please enter a valid email address';
+            return false;
+          } else {
+            emailError.textContent = '';
+            return true;
+          }
+        }
+        //email-validation-ends
+        
+        
+        //gender-validation-starts
+        function Gender() {
+          const genderError = document.querySelector('#gender-error');
+          
+          if (!genderInputs[0].checked && !genderInputs[1].checked) {
+            genderError.textContent = 'Please select your gender';
+            return false;
+          } else {
+            genderError.textContent = '';
+            return true;
+          }
+        }
+        //gender-validation-ends
+        
+        
+        //hobbies-validation-starts
+        function Hobbies() {
+          const hobbyError = document.querySelector('#hobby-error');
+          
+          if (!hobbyInputs[0].checked && !hobbyInputs[1].checked && !hobbyInputs[2].checked && !hobbyInputs[3].checked) {
+            hobbyError.textContent = 'Please select at least one Hobby';
+            return false;
+          } else {
+            hobbyError.textContent = '';
+            return true;
+          }
+        }
+        //hobbies-validation-starts
+        
+        
+        //designation-validation-starts
+        function Designation() {
+            const DesigError = document.querySelector('#designation-error');
+            
+            if (!desigInputs[0].checked && !desigInputs[1].checked  && !desigInputs[2].checked  && !desigInputs[3].checked) {
+                DesigError.textContent = 'Please select your Designation';
+              return false;
+            } else {
+                DesigError.textContent = '';
+              return true;
+            }
+          }
+          //designation-validation-ends
+        
+        //password-validation-starts
+        function Password() {
+          const passwordError = document.querySelector('#password-error');
+          const passwordInput = document.getElementById('password');
+          const passwordPattern = /^((?!.*[\s])(?=.*[A-Z])(?=.*\d).{8,75})$/;
+        
+          if (!passwordPattern.test(passwordInput.value)) {
+            passwordError.textContent = 'Password must contain at least 8 characters containing 1-uppercase 1-number';
+            return false;
+          } else {
+            passwordError.textContent = '';
+            return true;
+          }
+        }
+        //password-validation-ends
+        
+        
+        //password-confirmation-validation-starts
+        function ConfirmPassword() {
+          const confirmPasswordError = document.querySelector('#confirm-password-error');
+          
+          if (confirmPasswordInput.value === '') {
+            confirmPasswordError.textContent = 'Please re-enter your password';
+            return false;
+          } else if (confirmPasswordInput.value !== passwordInput.value) {
+            confirmPasswordError.textContent = 'Passwords do not match';
+            return false;
+          } else {
+            confirmPasswordError.textContent = '';
+            return true;
+          }
+        } 
+        //password-confirmation-validation-starts
+
+
+
+
+    </script>
+</body>

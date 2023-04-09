@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration-Form</title>
+    <style>
+        body{
+            background-color: rgb(39, 119, 247);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #form-container{
+            background-color: aliceblue;
+            padding: 50px;
+            width: 480px;
+            
+        }
+        h2{
+            margin:0px 0px 10px 0px;
+            text-align: center;
+        }
+        input{
+            width: 300px;
+            margin-left: 60px ;
+            
+            padding:10px 10px;
+            
+
+        }
+        input[type="submit"]{
+            width: 220px;
+            background-color: rgb(47, 157, 241);
+            color: aliceblue;
+        }
+        .error{
+            color: red;
+            margin-left: 60px;
+            text-align: left;
+        }
+        label{
+            margin-left: 60px;
+            margin-bottom: 10px;
+        }
+        .star{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="form-container">
+        <h2>Registration-Form </h2>
+        <form action="" method="post" onsubmit="return validateform()">
+            <label for="username">First-Name<span class="star">*</span></label><br>
+            <input type="text" name="userfirstname" class="firstname" id="username" placeholder="First Name" ><br>
+            <span id="usererror" class="error"></span> <br>
+
+            <label for="lastname">Last-Name</label><br>
+            <input type="text" name="userlastname" class="lastname" id="lastname" placeholder="Last-Name" ><br><br>
+            <div class="form-group">
+                <label for="email">Email<span class="star">*</span></label>
+                
+                <input type="email" class="form-control" id="email" name="useremail" placeholder="Example12@gmail.com" ><br>
+                <span id="email-error" class="error"></span> <br>
+             </div>
+
+
+            <label for="usermobnumber">Number<span class="star">*</span></label><br>
+            <input type="number" name="usermobilenumber" class="usernumber" id="usermobnumber" placeholder="Number" ><br>
+            <span id="usernumbererror" class="error"></span> <br>
+
+            <label for="userpassword" >Password<span class="star">*</span></label><br>
+            <input type="password" name="userpassword5" class="upassword" id="userpassword" placeholder="Password"><br>
+            <span id="userpassword1" class="error"></span> <br>
+            <input type="submit">
+        </form>
+
+    </div>
+    <script>
+        let username=document.getElementById("username");
+        let password=document.getElementById("userpassword");
+        let mobnumber=document.getElementById("usermobnumber");
+        let useremail=document.getElementById("email");
+        //const emailInput = document.getElementById('email');
+
+        let flag=1;
+        function validateform(){
+            if(username.value==""){
+                document.getElementById("usererror").innerHTML="User_Name is empty";
+                flag=0;
+            }
+            else if(username.value.length <3){
+                document.getElementById("usererror").innerHTML="user_Name require min 3 char";
+                flag=0;
+            }
+            else{
+                document.getElementById("usererror").innerHTML="";
+                flag=1;
+            }
+             const phonePattern = /^\d{10}$/;
+             if(phonePattern.test(mobnumber.value)){
+                document.getElementById("usernumbererror").innerHTML=""; 
+                
+             }
+             else{
+                document.getElementById("usernumbererror").innerHTML="Enter 10-digit mobile number"; 
+                flag=0;
+
+             }
+             const emailPattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+          
+              if (emailPattern.test(useremail.value)) {
+                document.getElementById("email-error").innerHTML=""; 
+                 
+                  
+             } else {
+                document.getElementById("email-error").innerHTML=" Enter Valid Email_id"; 
+                flag=0;
+              } 
+              const passwordPattern = /^((?!.*[\s])(?=.*[A-Z])(?=.*\d).{8,75})$/;
+        
+               if (passwordPattern.test(password.value)) {
+                document.getElementById("userpassword1").innerHTML="";
+               } else {
+                document.getElementById("userpassword1").innerHTML="Password must contain 1-Uppercae 1-Lowercase and Number"; 
+                flag=0;
+               }
+             
+          
+
+
+
+            if(flag){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
